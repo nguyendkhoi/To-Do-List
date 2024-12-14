@@ -18,10 +18,10 @@ The app will open in your browser at `http://localhost:3000`.
 
 ## Project structure
 
-- **`src/App.js`:** The main application component, which manages the state and renders other components.
-- **`src/todo/AddTask.js`:** Component for adding new tasks to the list.
-- **`src/todo/ListToDo.js`:** Component for displaying the list of tasks and handling editing/deleting tasks.
-- **`src/App.scss`:** File containing the CSS styles for the application.
+- **`views/App.js`:** The main application component, which manages the state and renders other components.
+- **`views/todo/AddTask.js`:** Component for adding new tasks to the list.
+- **`views/todo/ListToDo.js`:** Component for displaying the list of tasks and handling editing/deleting tasks.
+- **`views/App.scss`:** File containing the CSS styles for the application.
 
 ## Technologies used
 

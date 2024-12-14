@@ -1,26 +1,63 @@
-btn {
+// Variables
+$primary-color: #282c34;
+$red-color: rgb(220, 76, 62);
+$red-hover-color: rgb(195, 57, 44);
+$gray-color: gray;
+$white-color: white;
+
+// Mixins
+@mixin btn-base {
   display: inline-block;
-  border: 0px;
+  border: 0;
   padding: 9px 7px;
+  cursor: pointer;
 }
 
+// Button styles
+.btn {
+  @include btn-base;
+}
+
+.btn-red {
+  background-color: $red-color;
+  color: $white-color;
+
+  &:hover {
+    background-color: $red-hover-color;
+  }
+}
+
+// Checkbox styles
 .checkbox {
   border-radius: 100%;
 }
 
+// App styles
 .App {
   text-align: center;
-}
 
-.App-logo {
-  height: 10vmin;
-  pointer-events: none;
+  &-logo {
+    height: 10vmin;
+    pointer-events: none;
 
-  @media (prefers-reduced-motion: no-preference) {
-    animation: App-logo-spin infinite 20s linear;
+    @media (prefers-reduced-motion: no-preference) {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+
+  &-header {
+    background-color: $primary-color;
+    min-height: 100vh;
+    font-size: calc(10px + 2vmin);
+    color: $white-color;
+  }
+
+  &-link {
+    color: #61dafb;
   }
 }
 
+// List container styles
 .listtodo-container {
   width: 90%;
   margin: auto;
@@ -28,69 +65,120 @@ btn {
   ul {
     margin-bottom: 0;
     padding: 0;
-  }
 
-  li {
-    list-style: none;
-    border-bottom: 1px solid gray;
-    margin-bottom: 10px;
+    li {
+      list-style: none;
+      border-bottom: 1px solid $gray-color;
+      margin-bottom: 10px;
 
-    .main_task {
-      display: flex;
-      flex-direction: row;
-      .finish-task-btn {
-        @extend btn;
-        border-radius: 50px;
-        height: 18px;
-        width: 18px;
-      }
+      form {
+        border: 1px solid $gray-color;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
 
-      div:first-of-type {
-        flex-grow: 10;
-      }
+        input {
+          width: 95%;
+          background-color: $primary-color;
+          color: $white-color;
+          border: none;
+          height: 40px;
+          font-size: calc(10px + 2vmin);
+          padding: 10px;
 
-      .buttonChange {
-        margin-bottom: 8px;
-        flex-grow: 1;
-        button {
-          @extend btn;
-          margin-left: 5px;
-          border-radius: 5px;
+          &:focus {
+            outline: none;
+          }
         }
       }
-    }
 
-    .space {
-      height: 15px;
+      .main_task {
+        display: flex;
+        flex-direction: row;
+
+        .task-content {
+          text-align: left;
+        }
+
+        .finish-task-btn {
+          @extend .btn;
+          border-radius: 50px;
+          height: 18px;
+          width: 18px;
+        }
+
+        div:first-of-type {
+          flex-grow: 10;
+        }
+
+        .buttonChange {
+          margin-bottom: 8px;
+          flex-grow: 1;
+
+          button {
+            @extend .btn;
+            margin-left: 5px;
+            border-radius: 5px;
+
+            &:nth-child(2) {
+              @extend .btn-red;
+            }
+
+            &:first-of-type:hover {
+              background-color: rgb(245, 245, 245);
+            }
+          }
+        }
+      }
+
+      .space {
+        height: 15px;
+      }
     }
   }
 }
 
+// Main add task styles
 .main-add-task {
   width: 90%;
   margin: auto;
 
+  button {
+    @extend .btn;
+  }
+
+  .add-task-btn {
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    background-color: $primary-color;
+    color: $white-color;
+    font-size: 16px;
+    border-top: 1px solid $gray-color;
+
+    &:hover {
+      color: $red-color;
+    }
+  }
+
   .add-task-form {
-    border: 1px solid grey;
+    border: 1px solid $gray-color;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    .input {
-      height: 30px;
-    }
+
     input {
       width: 95%;
-      background-color: #282c34;
+      background-color: $primary-color;
+      color: $white-color;
       border: none;
-      color: white;
       height: 40px;
       font-size: 18px;
       padding: 10px;
-    }
 
-    input:focus {
-      outline: none;
-      color: white;
+      &:focus {
+        outline: none;
+      }
     }
 
     .change-button {
@@ -99,41 +187,18 @@ btn {
       padding: 10px;
 
       button {
-        @extend btn;
         margin-left: 5px;
         border-radius: 5px;
+
         &:nth-child(2) {
-          background-color: rgb(220, 76, 62);
-          color: white;
-
-          &:hover {
-            background-color: rgb(195, 57, 44);
-          }
-        }
-
-        &:first-of-type:hover {
-          background-color: rgb(245, 245, 245);
+          @extend .btn-red;
         }
       }
     }
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
+// Keyframes
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

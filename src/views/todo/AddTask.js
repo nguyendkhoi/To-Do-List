@@ -35,13 +35,6 @@ class AddTask extends React.Component {
     this.setState({ showAddTask: false, input: "" });
   };
 
-  handleKeyDown = (event) => {
-    event.preventDefault();
-    if (event.key === "Enter") {
-      this.handleSubmit(event);
-    }
-  };
-
   render() {
     return (
       <div className="main-add-task">
@@ -64,7 +57,9 @@ class AddTask extends React.Component {
             </div>
           </form>
         ) : (
-          <button onClick={this.handleShow}>Add Task</button>
+          <button onClick={this.handleShow} className="add-task-btn">
+            Add Task
+          </button>
         )}
       </div>
     );

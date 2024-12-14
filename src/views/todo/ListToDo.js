@@ -71,7 +71,7 @@ class ListToDo extends React.Component {
             ) : (
               <li className="task" key={item.id}>
                 <div className="main_task">
-                  <div>
+                  <div className="task-content">
                     <input type="checkbox" className="finish-task-btn"></input>
                     {item.value}
                   </div>
